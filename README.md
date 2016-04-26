@@ -5,3 +5,6 @@ Once upon a time there is God.....
 
 ##CHAPTER 2
 God feels hungry everyday.
+
+##CHAPTER 3
+He comes upon with a good idea.
