@@ -15,7 +15,11 @@ module.exports = (robot) ->
     #send message to specific channel TODO: change channel to gohan when deploy
 
     robot.messageRoom "labo_benri_tools", "おなかすいてきた？おすすめのおみせだよ"
-    addReactions(msg,'pig')
+
+
+  robot.hear /おすすめ/i, (msg)->
+      addReactions(msg,'pig')
+
 
   robot.hear /ない/i, (msg)->
     msg.send msg.random [
@@ -32,7 +36,7 @@ module.exports = (robot) ->
       qs: {
         'token': process.env.HUBOT_SLACK_TOKEN
         'name': name
-        'channel': 'labo_benri_tools'
+        'channel': msg.message.rawMessage.channel
         'timestamp': msg.message.rawMessage.ts
       }
     }
