@@ -8,6 +8,7 @@ module.exports = (robot) ->
       "ぐぅ...",
       "腹が減ってはなんとやら、だね"
     ]
+    robot.messageRoom "labo_benri_tools", "Test"
     count++;
 
   robot.hear /ない/i, (msg)->

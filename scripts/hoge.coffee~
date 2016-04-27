@@ -1,0 +1,7 @@
+var count = 0;
+
+module.exports = (robot) ->
+
+  robot.hear /へった/i, (msg)->
+    msg.send msg.random ["おなかすいたね","そろそろごはんだね","ぐぅ..."]
+    msg.send "cnt = " + count
