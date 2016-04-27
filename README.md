@@ -12,6 +12,18 @@ has, etc!
 [hubot]: http://hubot.github.com
 [generator-hubot]: https://github.com/github/generator-hubot
 
+## 主な機能
+
+### タイミング
+お昼に一回、夜に一回だけ、ユーザーからのメッセージがあった段階でgohanチャンネルに投稿する。これはgohanチャンネルの住民にご飯にいく機運を高める機能があることがわかっている。昼・夜のspecificな時間は未定。
+
+### 否定表現の除去
+”ない”の入った文章をすべてreject、お腹減っていないものとする。
+
+### お店リストからのチョイス
+botにお店リストにある店の名前をつぶやくことで、#gohanチャンネルにサジェストすることが出来る。gohanチャンネルに投稿するbotからのメッセージに、reactionが付加されて、アンケートのように使うことが可能。
+
+
 ### Running cyber-onaka-suita Locally
 
 You can test your hubot by running the following, however some plugins will not
