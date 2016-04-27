@@ -14,7 +14,7 @@ module.exports = (robot) ->
 
     #send message to specific channel TODO: change channel to gohan when deploy
 
-    robot.messageRoom "labo_benri_tools", "おなかすいてきた？おすすめのおみせだよ"
+    robot.messageRoom "onakasuita_bot_test", "おなかすいてきた？おすすめのおみせだよ"
 
 
   robot.hear /おすすめ/i, (msg)->
