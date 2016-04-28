@@ -8,7 +8,8 @@ module.exports = (robot) ->
       "##{response.message.room}"
 
   robot.hear /^(?!.*ない).+$/i, (msg)->
-    if get_channel(msg) == msg.message.user.name
+    msg.send msg.message.user.name
+    if get_channel(msg) == "@"+msg.message.user.name
       #send message to user from DM
       msg.send msg.random [
         "おなかすいたね！",
@@ -20,7 +21,7 @@ module.exports = (robot) ->
     robot.messageRoom "onakasuita_bot_test", "おなかすいてきた？きょうのおすすめはこちら(´・ω・`)"
 
   robot.hear /ない/i, (msg)->
-    if get_channel(msg) == msg.message.user.name
+    if get_channel(msg) == "@"+msg.message.user.name
       msg.send msg.random [
         "おなかへってないの？",
         "おなかへってないのか...",
