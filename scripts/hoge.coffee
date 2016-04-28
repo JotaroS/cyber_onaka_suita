@@ -8,7 +8,6 @@ module.exports = (robot) ->
       "##{response.message.room}"
 
   robot.hear /^(?!.*ない).+$/i, (msg)->
-    msg.send msg.message.user.name
     if get_channel(msg) == "@"+msg.message.user.name
       #send message to user from DM
       msg.send msg.random [
@@ -17,8 +16,8 @@ module.exports = (robot) ->
         "ぐぅ...",
         "腹が減ってはなんとやら、だね"
       ]
-    #send message to specific channel TODO: change channel to gohan when deploy
-    robot.messageRoom "onakasuita_bot_test", "おなかすいてきた？きょうのおすすめはこちら(´・ω・`)"
+      #send message to specific channel TODO: change channel to gohan when deploy
+      robot.messageRoom "onakasuita_bot_test", "おなかすいてきた？きょうのおすすめはこちら(´・ω・`)"
 
   robot.hear /ない/i, (msg)->
     if get_channel(msg) == "@"+msg.message.user.name
