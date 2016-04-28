@@ -1,6 +1,12 @@
 request = require('request')
 
 module.exports = (robot) ->
+  get_channel = (response) ->
+    if response.message.room == response.message.user.name
+      "@#{response.message.room}"
+    else
+      "##{response.message.room}"
+
   robot.hear /^(?!.*ない).+$/i, (msg)->
 
     #send message to user from DM
@@ -21,6 +27,8 @@ module.exports = (robot) ->
       "まだおなかへってないの？",
       "へってない？またおなかへったらおしえてね"
     ]
+    msg.send get_channel(msg)
+    console.log(get_channel(msg))
 
   addReactions = (msg, name) ->
     options = {
