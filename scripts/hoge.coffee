@@ -16,8 +16,15 @@ module.exports = (robot) ->
         "ぐぅ...",
         "腹が減ってはなんとやら、だね"
       ]
+      teishoku = ["ピグ","食堂もり川","こだわりや","一番餃子","おおさわ"]
+      teishoku2= ["美味しいや","こくわがた","ごち屋","いなか家"]
+      ramen = ["用心棒","家家家","織恩","山手ラーメン","IZASA","瀬佐味亭"]
+      teishoku_index = Math.floor(Math.random()*teishoku.length)
+      teishoku2_index = Math.floor(Math.random()*teishoku2.length)
+      ramen_index = Math.floor(Math.random()*ramen.length)
+      enquete = ":one:"+teishoku[teishoku_index]+"\n" +":two:"+teishoku2[teishoku2_index]+"\n" + ":three:"+ramen[ramen_index]+"\n"
       #send message to specific channel TODO: change channel to gohan when deploy
-      robot.messageRoom "onakasuita_bot_test", "おなかすいてきた？きょうのおすすめはこちら(´・ω・`)"
+      robot.messageRoom "onakasuita_bot_test", "おなかすいてきた？きょうのおすすめはこちら(´・ω・`)\n" +enquete
 
   robot.hear /ない/i, (msg)->
     if get_channel(msg) == "@"+msg.message.user.name
@@ -27,17 +34,3 @@ module.exports = (robot) ->
         "まだおなかへってないの？",
         "へってない？またおなかへったらおしえてね"
       ]
-
-  addReactions = (msg, name) ->
-    options = {
-      url: 'https://slack.com/api/reactions.add'
-      qs: {
-        'token': process.env.HUBOT_SLACK_TOKEN
-        'name': name
-        'channel': msg.message.rawMessage.channel
-        'timestamp': msg.message.rawMessage.ts
-      }
-    }
-    request.post options, (err, res, body) ->
-      if err? or res.statusCode isnt 200
-        robot.logger.error("Failed to add emoji reaction #{JSON.stringify(err)}")
