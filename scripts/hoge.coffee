@@ -1,5 +1,6 @@
-request = require('request')
+#request = require('request')
 fs = require('fs')
+
 
 module.exports = (robot) ->
   get_channel = (response) ->
@@ -17,22 +18,30 @@ module.exports = (robot) ->
         "ぐぅ...",
         "腹が減ってはなんとやら、だね"
       ]
-      robot.messageRoom "onakasuita_bot_test", "おなかすいてきた？きょうのおすすめはこちら(´・ω・`)\n"
+      robot.messageRoom "onakasuita_bot_test","おなかすいてきた？"
       #get data from text file
-      fs.readFile 'scripts/teishoku.txt', 'utf8', (err, data) ->
-        throw err if err
-        teishoku = data.split(",")
-        robot.messageRoom "onakasuita_bot_test", ":one:"+msg.random(teishoku)+"\n"
-      #teishoku = ["ピグ","食堂もり川","こだわりや","一番餃子","おおさわ"]
-      fs.readFile 'scripts/teishoku2.txt', 'utf8', (err, data) ->
-        throw err if err
-        teishoku2 = data.split(",")
-        robot.messageRoom "onakasuita_bot_test", ":two:"+msg.random(teishoku2)+"\n"
-      #teishoku2= ["美味しいや","こくわがた","ごち屋","いなか家"]
-      fs.readFile 'scripts/ramen.txt', 'utf8', (err, data) ->
-        throw err if err
-        ramen = data.split(",")
-        robot.messageRoom "onakasuita_bot_test", ":three:"+msg.random(ramen)+"\n"
+      # fs.readFile 'scripts/teishoku.txt', 'utf8', (err, data) ->
+      #   throw err if err
+      #   teishoku = data.split(",")
+      #   robot.messageRoom "onakasuita_bot_test", ":one:"+msg.random(teishoku)+"\n"
+      # #teishoku = ["ピグ","食堂もり川","こだわりや","一番餃子","おおさわ"]
+      # fs.readFile 'scripts/teishoku2.txt', 'utf8', (err, data) ->
+      #   throw err if err
+      #   teishoku2 = data.split(",")
+      #   robot.messageRoom "onakasuita_bot_test", ":two:"+msg.random(teishoku2)+"\n"
+      # #teishoku2= ["美味しいや","こくわがた","ごち屋","いなか家"]
+      # fs.readFile 'scripts/ramen.txt', 'utf8', (err, data) ->
+      #   throw err if err
+      #   ramen = data.split(",")
+      #   robot.messageRoom "onakasuita_bot_test", ":three:"+msg.random(ramen)+"\n"
+      for j of ["one","two","three"]
+        console.log(j)
+        fs.readFile 'scripts/'+j+'.txt','utf8',(err,data)->
+          throw err if err
+          text = data.split(",")
+          robot.messageRoom "onakasuita_bot_test", ":"+j+":"+msg.random(text)+"\n"
+
+      robot.messageRoom "onakasuita_bot_test","きょうのおすすめだよ！(´・ω・`)\n"
       #ramen = ["用心棒","家家家","織恩","山手ラーメン","IZASA","瀬佐味亭"]
       #enquete = ":one:"+msg.random(teishoku)+"\n" +":two:"+msg.random(teishoku2)+"\n" + ":three:"+msg.random(ramen)+"\n"
       #send message to specific channel TODO: change channel to gohan when deploy
