@@ -34,7 +34,7 @@ module.exports = (robot) ->
       #   throw err if err
       #   ramen = data.split(",")
       #   robot.messageRoom "onakasuita_bot_test", ":three:"+msg.random(ramen)+"\n"
-      for j of ["one","two","three"]
+      for j in ["one","two","three"]
         console.log(j)
         fs.readFile 'scripts/'+j+'.txt','utf8',(err,data)->
           throw err if err
